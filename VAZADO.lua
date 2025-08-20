@@ -11507,53 +11507,57 @@ Status:Toggle("Devil Fruit", false, function(value)
 demonfruit = value
 end)
 
-
 spawn(function()
-		while wait() do
-			if game.Players.localPlayer.Data.Points.Value >= PointStats then
-				if melee then
-					local args = {
-						[1] = "AddPoint",
-						[2] = "Melee",
-						[3] = PointStats
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end 
-				if defense then
-					local args = {
-						[1] = "AddPoint",
-						[2] = "Defense",
-						[3] = PointStats
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end 
-				if sword then
-					local args = {
-						[1] = "AddPoint",
-						[2] = "Sword",
-						[3] = PointStats
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end 
-				if gun then
-					local args = {
-						[1] = "AddPoint",
-						[2] = "Gun",
-						[3] = PointStats
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end 
-				if demonfruit then
-					local args = {
-						[1] = "AddPoint",
-						[2] = "Demon Fruit",
-						[3] = PointStats
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+	while wait() do
+		if PointStats and type(PointStats) == "number" and PointStats > 0 then
+			local player = game.Players.LocalPlayer
+			if player and player.Data and player.Data.Points and player.Data.Points.Value then
+				if player.Data.Points.Value >= PointStats then
+					if melee then
+						local args = {
+							[1] = "AddPoint",
+							[2] = "Melee",
+							[3] = PointStats
+						}
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+					end 
+					if defense then
+						local args = {
+							[1] = "AddPoint",
+							[2] = "Defense",
+							[3] = PointStats
+						}
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+					end 
+					if sword then
+						local args = {
+							[1] = "AddPoint",
+							[2] = "Sword",
+							[3] = PointStats
+						}
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+					end 
+					if gun then
+						local args = {
+							[1] = "AddPoint",
+							[2] = "Gun",
+							[3] = PointStats
+						}
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+					end 
+					if demonfruit then
+						local args = {
+							[1] = "AddPoint",
+							[2] = "Demon Fruit",
+							[3] = PointStats
+						}
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+					end
 				end
 			end
 		end
-	end)
+	end
+end)
 	    
 
 Time = StatusTime:Label("Executor Time")
@@ -11640,4 +11644,5 @@ end)
             end
          end)
      end)
+
      
